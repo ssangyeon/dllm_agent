@@ -1,0 +1,6 @@
+include LICENSE
+include NOTICE
+include REFERENCES.md
+recursive-include examples *.json *.md
+recursive-include scripts *.sbatch
+recursive-include tests *.py

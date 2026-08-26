@@ -1,0 +1,20 @@
+[
+  {
+    "task_id": "calculator-happy-path",
+    "request": "2 + 3 * 4",
+    "outputs": [
+      "{\"type\":\"tool\",\"tool\":\"calculator\",\"arguments\":{\"expression\":\"2 + 3 * 4\"}}",
+      "{\"type\":\"final\",\"answer\":\"Calculation result: 14\"}"
+    ],
+    "expected_contains": "14"
+  },
+  {
+    "task_id": "one-shot-repair",
+    "request": "Return a final answer",
+    "outputs": [
+      "final answer without JSON",
+      "{\"type\":\"final\",\"answer\":\"Schema repaired exactly once\"}"
+    ],
+    "expected_contains": "repaired"
+  }
+]

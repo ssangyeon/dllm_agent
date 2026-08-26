@@ -1,0 +1,14 @@
+[
+  {
+    "task_id": "live-calculator-703",
+    "request": "Use the calculator tool before answering: what is 37 * 19? Include the numeric result in the final answer.",
+    "expected_contains": "703",
+    "required_tools": ["calculator"]
+  },
+  {
+    "task_id": "live-retrieval-termination",
+    "request": "Use the retrieve tool on the local notes before answering: what two controls guarantee bounded termination?",
+    "expected_contains": "maximum step count",
+    "required_tools": ["retrieve"]
+  }
+]

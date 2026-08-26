@@ -1,0 +1,102 @@
+dLLM Agent — provenance and license notice
+==============================================
+
+This implementation was written independently for this project. Its core has
+no third-party runtime dependencies and contains no copied or modified source
+from the references below. Optional GPU factories call separately installed
+Torch, Transformers, and local checkpoints; none are vendored here. Their
+respective licenses do not relicense this project.
+
+Pinned references
+-----------------
+
+1. ReAct repository, commit
+   6bdb3a1fd38b8188fc7ba4102969fe483df8fdc9:
+   https://github.com/ysymyth/ReAct/tree/6bdb3a1fd38b8188fc7ba4102969fe483df8fdc9
+   Concept consulted: interleaving model decisions with external actions and
+   observations. Upstream code license: MIT. No upstream source was copied.
+
+2. RFC 8259, "The JavaScript Object Notation (JSON) Data Interchange Format":
+   https://www.rfc-editor.org/rfc/rfc8259
+   Concept consulted: JSON syntax/interoperability. RFC text is subject to the
+   IETF Trust Legal Provisions; no RFC text or code is redistributed here.
+
+3. RFC 8785, "JSON Canonicalization Scheme (JCS)":
+   https://www.rfc-editor.org/rfc/rfc8785
+   Concept consulted: deterministic serialization before hashing. This project
+   uses Python sorted-key JSON for its constrained action schema and does NOT
+   claim full RFC 8785/JCS conformance. RFC licensing is as described above.
+
+4. CPython v3.12.5, tag commit
+   ff3bc82f7c9882c27aad597aac79355da7257186:
+   https://github.com/python/cpython/tree/ff3bc82f7c9882c27aad597aac79355da7257186
+   APIs consulted/used: json, ast, hashlib, pathlib, dataclasses, unittest.
+   CPython is distributed under the Python Software Foundation License Version
+   2 and additional component notices. This project calls installed stdlib APIs
+   and does not vendor CPython source.
+
+5. PyTorch v2.7.1:
+   https://github.com/pytorch/pytorch/tree/v2.7.1
+   Optional installed tensor/model runtime used only inside local-model
+   factories and their returned adapters. Upstream license: BSD 3-Clause.
+   PyTorch binaries and source are not redistributed by this project.
+
+6. Hugging Face Transformers v4.57.6:
+   https://github.com/huggingface/transformers/tree/v4.57.6
+   Optional installed API used by the local-model factories: AutoModel,
+   AutoModelForCausalLM, and AutoTokenizer. Upstream license: Apache License
+   2.0. Transformers is not vendored, is not imported by the core runtime, and
+   no upstream source was copied.
+
+7. LLaDA repository, commit
+   9182493720ed723ef8031210d85959364e51cbe0:
+   https://github.com/ML-GSAI/LLaDA/tree/9182493720ed723ef8031210d85959364e51cbe0
+   Concept consulted: diffusion-language-model backends can require a different
+   generation runtime while presenting the same text action boundary. No
+   top-level LICENSE file was found at this pinned commit during the provenance
+   review, so its source was treated as unavailable for reuse. It is not a
+   source dependency and no repository source, prompts, or assets were copied.
+   The independently written optional adapter does execute the separately
+   cached model snapshot's custom Hugging Face modeling code via
+   trust_remote_code=True. That snapshot and its weights are not redistributed
+   here and require a separate license/security review before use.
+
+8. Meta Llama 3.1 8B Instruct, local snapshot revision
+   0e9e39f249a16976918f6564b8830bc894c89659:
+   https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+   Used only as an optional installed autoregressive comparison checkpoint.
+   No weights, tokenizer assets, or model files are redistributed by this
+   project. Access and use remain subject to Meta's model license and terms.
+
+9. Unified dLLM repository, commit
+   ca176752fbceec49c6b4777a2c18ae88e4eb10ed:
+   https://github.com/ZHZisZZ/dllm/tree/ca176752fbceec49c6b4777a2c18ae88e4eb10ed
+   Concept consulted: common diffusion-model sampler interfaces and runnable
+   LLaDA/Dream examples. Upstream license: Apache License 2.0. It is not a
+   runtime dependency and no source was copied.
+
+10. Fast-dLLM repository, commit
+    a9b81e4caa240c8cad4f7dc1889ff4852a0fca5b:
+    https://github.com/NVlabs/Fast-dLLM/tree/a9b81e4caa240c8cad4f7dc1889ff4852a0fca5b
+    Concept consulted: acceleration-oriented diffusion decoding as possible
+    future work. Upstream license: Apache License 2.0. No source was copied.
+
+11. R1-Searcher repository, commit
+    ad86a6692be0d7fc4445c77938c090349815e997:
+    https://github.com/RUCAIBox/R1-Searcher/tree/ad86a6692be0d7fc4445c77938c090349815e997
+    Concept consulted: iterative search/tool interaction with external
+    observations. Upstream license: MIT. No source was copied.
+
+12. DLLM-Searcher repository, commit
+    9deca06cb3da63a758dba4c6ffb18a156d47d6ab:
+    https://github.com/bubble65/DLLM-Searcher/tree/9deca06cb3da63a758dba4c6ffb18a156d47d6ab
+    Concept consulted: diffusion-language-model search agents. No top-level
+    license was found during review, so source was treated as unavailable for
+    reuse. It is not a dependency and no source was copied.
+
+Project licensing
+-----------------
+
+Copyright in this project's original source code is reserved. See `LICENSE`.
+Model weights, datasets, and backend plugins may carry separate licenses and
+must be reviewed when they are connected.
